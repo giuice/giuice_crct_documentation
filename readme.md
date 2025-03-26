@@ -41,13 +41,14 @@ your-project/
 ```
 
 2. **Initialize core files**:
-
-- Copy the `.memory-bank-rules` template from the [Core System Prompt](core-system-prompt.md)
+Using the [templates](templates) folder: 
+- Copy the `.memory-bank-rules` template from the [Core System Prompt](crct-prompts-symbolic/core_system_prompt.md)
 - Create basic `projectbrief.md` with your project's mission and objectives
-- Create empty `activeContext.md`, `changelog.md`, and other core files
+- Copy empty `activeContext.md`, `changelog.md`, `progress.md`and other core files 
 
-3. **Set up plugin files**:
-
+1. **Set up plugin files**:
+- Set you system prompt with [Core System Prompt](crct-prompts-symbolic/core_system_prompt.md)
+  - In github copilot create `.github`folder and save core system prompt instructions with the name copilot-instructions.md
 - Copy [Setup/Maintenance Plugin](crct-prompts-symbolic/setup-plugin.md) to `memory-bank/plugins/setup_plugin.md`
 - Copy [Strategy Plugin](crct-prompts-symbolic/strategy_plugin.md) to `memory-bank/plugins/strategy_plugin.md`
 - Copy [Execution Plugin](crct-prompts-symbolic/execution-plugin.md) to `memory-bank/plugins/execution_plugin.md`

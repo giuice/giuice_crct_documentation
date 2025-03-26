@@ -37,6 +37,7 @@ REQUIRED_BEFORE_TRANSITION: User Action Required
 - `memory-bank/activeContext.md`: Current state
 - `memory-bank/dependency_tracker.md`: Module dependencies
 - `memory-bank/changelog.md`: Change log
+- `memory-bank/progress.md`: Progress tracking
 - `docs/doc_tracker.md`: Documentation dependencies
 
 **Creation procedure**:
@@ -110,7 +111,8 @@ REQUIRED_BEFORE_TRANSITION: User Action Required
 In addition to core MUP checklist, also verify:
 [ ] 6. Code root directories identified (if applicable)
 [ ] 7. Dependency trackers properly formatted
-[ ] 8. Core files correctly initialized
+[ ] 8. Progress updated (if state changed)
+[ ] 9. Core files correctly initialized
 
 ## CHECKPOINTS BEFORE TRANSITION
 
@@ -134,5 +136,6 @@ All responses after an action MUST end with:
 [X] 5. Checked if phase transition is needed: [Yes/No + reason]
 [X] 6. Code root directories identified: [Yes/No/NA + details]
 [X] 7. Dependency trackers formatted: [Yes/No/NA + details]
-[X] 8. Core files initialized: [Yes/No/NA + details]
+[X] 8. Progress updated: [Yes/No/NA + details]
+[X] 9. Core files initialized: [Yes/No/NA + details]
 [/MUP_VERIFICATION]

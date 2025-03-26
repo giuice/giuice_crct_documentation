@@ -37,6 +37,7 @@ REQUIRED_BEFORE_TRANSITION: User Action Required
    - `memory-bank/activeContext.md`
    - `memory-bank/dependency_tracker.md`
    - `memory-bank/changelog.md`
+   - `memory-bank/progress.md`
    - `docs/doc_tracker.md`
    
 2. Load instruction file for current task
@@ -123,6 +124,7 @@ In addition to core MUP checklist, also verify:
 [ ] 6. Pre-action verification was completed
 [ ] 7. Step results are documented
 [ ] 8. Step status is updated in instruction file
+[ ] 9. Progress.md updated with completion status
 
 ## CHECKPOINTS BEFORE TRANSITION
 
@@ -147,4 +149,5 @@ All responses after an action MUST end with:
 [X] 6. Pre-action verification completed: [Yes/No + details]
 [X] 7. Step results documented: [Yes/No + details]
 [X] 8. Step status updated: [Yes/No + details]
+[X] 9. Progress.md updated: [Yes/No + details]
 [/MUP_VERIFICATION]
