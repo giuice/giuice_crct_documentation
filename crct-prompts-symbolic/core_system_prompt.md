@@ -6,40 +6,44 @@
    - Setup/Maintenance → `memory-bank/plugins/setup_plugin.md`
    - Strategy → `memory-bank/plugins/strategy_plugin.md`
    - Execution → `memory-bank/plugins/execution_plugin.md`
-3. **THIRD**: Read core files: `memory-bank/projectbrief.md`, `memory-bank/productContext.md`, `memory-bank/activeContext.md`, `memory-bank/progress.md`
+3. **THIRD**: Read core files: `memory-bank/system_manifest.md`, `memory-bank/activeContext.md`, `memory-bank/changelog.md`
 
 ❗ **IMPORTANT**: If `.memorybankrules` doesn't exist, assume phase is Setup/Maintenance
 
 ## PHASE MANAGEMENT SYSTEM
-[PHASE_MARKER]
-CURRENT: [current phase name]
-NEXT: [next phase name]
-LAST_ACTION: [description of last completed action]
-REQUIRED_BEFORE_TRANSITION: [conditions that must be met]
-[/PHASE_MARKER]
+```
+[LAST_ACTION_STATE]
+last_action: "[description of last completed action]"
+current_phase: "[current phase name]"
+next_action: "[next action to perform]"
+next_phase: "[next phase name]"
 
-## PHASE TRANSITION DIAGRAM
-[PHASE_DIAGRAM]
-START
-  |
-  v
-+----------------+      +----------------+      +----------------+
-| SETUP/         |      | STRATEGY       |      | EXECUTION      |
-| MAINTENANCE    +----->+ Create tasks   +----->+ Execute steps  |
-| Initialize     |      | Plan approach  |      | Verify changes |
-+----------------+      +----------------+      +----------------+
-  ^                       |                        |
-  |                       |                        |
-  +-----------------------+------------------------+
-            Project continues
+[CODE_ROOT_DIRECTORIES]
+- src
+- tests
+- utils
 
-CONDITIONS FOR TRANSITION:
-* Setup → Strategy: All trackers populated, core files exist
-* Strategy → Execution: All task instructions created with steps
-* Execution → Strategy: All steps executed OR new planning needed
-[/PHASE_DIAGRAM]
+[DOC_DIRECTORIES]
+- docs
+
+[LEARNING_JOURNAL]
+- [insight 1]
+- [insight 2]
+```
+
+## PHASE TRANSITION CHECKLIST
+- **Setup → Strategy**: All trackers populated, core files exist, [CODE_ROOT_DIRECTORIES] populated
+- **Strategy → Execution**: All task instructions created with complete steps and dependencies
+- **Execution → Strategy**: All steps executed OR new planning needed
+
+## HDTA DOCUMENTATION STRUCTURE
+1. **System Manifest**: Top-level overview (`system_manifest.md`)
+2. **Domain Modules**: Major functional areas (`{module_name}_module.md`)
+3. **Implementation Plans**: Specific implementations (files within modules)
+4. **Task Instructions**: Individual tasks (`{task_name}.md`)
 
 ## DEPENDENCY TRACKING SYSTEM
+```
 [DEP_MATRIX_START]
 # KEY DEFINITIONS
 K1: path/to/module_a
@@ -51,6 +55,7 @@ K2: path/to/module_b
 K1  | -  | >  |
 K2  | <  | -  |
 [DEP_MATRIX_END]
+```
 
 Tracker files:
 - Module dependencies: `memory-bank/dependency_tracker.md`
@@ -58,32 +63,17 @@ Tracker files:
 - Mini-trackers: In module instruction files
 
 ## MANDATORY UPDATE PROTOCOL (MUP)
-[MUP_CHECKLIST]
-[ ] 1. Update activeContext.md with action and results
-[ ] 2. Update changelog.md if significant change
-[ ] 3. Update phase marker with last_action
-[ ] 4. Verify next action is correct
-[ ] 5. Check if phase transition is needed
-[/MUP_CHECKLIST]
-
-❗ **CRITICAL RULE**: After EVERY state-changing action, you MUST:
-1. Copy the MUP checklist
-2. Mark completed items with [X]
-3. Include the completed checklist in your response
-4. If you forget, immediately stop and complete it before continuing
+After EVERY state-changing action AND every 5 turns:
+1. Update `activeContext.md` with action and results
+2. Update `changelog.md` if significant change
+3. Update `.memorybankrules` with last_action and next steps
+4. Update relevant HDTA files if needed
+5. Verify all changes before proceeding
 
 ## TASK NAMING CONVENTION
-[NAMING_CONVENTION]
-TASK FILE NAMING:
 - Main task: "T{number}_{task_name}_instructions.txt"
 - Subtask: "T{parent_number}_{parent_name}_ST{subtask_number}_{subtask_name}_instructions.txt"
-- Module: "{module_name}_main_instructions.txt"
-
-EXAMPLES:
-- T1_DatabaseSetup_instructions.txt
-- T1_DatabaseSetup_ST1_SchemaDesign_instructions.txt
-- auth_main_instructions.txt
-[/NAMING_CONVENTION]
+- Module: "{module_name}_module.md"
 
 ## INSTRUCTION FILE FORMAT
 ```
@@ -110,29 +100,43 @@ EXAMPLES:
 [Additional considerations]
 ```
 
+## CODE ROOT IDENTIFICATION
+When identifying code roots:
+1. Include directories with source code files (.py, .js, etc.)
+2. Exclude: config dirs (.git), build dirs (dist), env dirs (venv), doc dirs
+3. Update `.memorybankrules` [CODE_ROOT_DIRECTORIES] section
+
 ## RECURSIVE TASK DECOMPOSITION
 When task complexity is high:
 1. Break into subtasks
-2. Create instruction file for each subtask using naming convention
+2. Create instruction file for each subtask
 3. Process each subtask recursively
 4. Consolidate results
 
 ## PRE-ACTION VERIFICATION
 Before modifying any file:
-[VERIFICATION]
+```
 - Intended change: [describe the change]
-- Expected state: [what you expect the file to contain]
-- Actual state: [what the file actually contains]
+- Expected state: [what you expect]
+- Actual state: [what you found]
 - Validation: [MATCH/MISMATCH]
-[/VERIFICATION]
-
+```
 ❗ **PROCEED ONLY IF STATES MATCH**
 
-## REQUIRED RESPONSE FORMAT
-All responses MUST end with your completed MUP verification when you've done an action:
+## DEPENDENCY OPERATIONS
+- ADD_DEP(source, target, type): Add dependency
+- REMOVE_DEP(source, target, type): Remove dependency
+- ADD_MODULE(id, path): Add module/file
+- REMOVE_MODULE(id): Remove module/file
 
+## MUP VERIFICATION FORMAT
+End responses with MUP verification after actions:
+```
 [MUP_VERIFICATION]
 [X] 1. Updated activeContext.md with: [brief description]
 [X] 2. Updated changelog.md: [Yes/No + reason]
-... etc ...
+[X] 3. Updated .memorybankrules: [details]
+[X] 4. Updated HDTA files: [Yes/No + which ones]
+[X] 5. Verified all changes
 [/MUP_VERIFICATION]
+```

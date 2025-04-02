@@ -21,7 +21,6 @@ CRCT Simplified Framework provides a structured approach to manage complex proje
 - GitHub Copilot or similar AI assistant
 - A version control system (e.g., Git)
 - A text editor
-
 ### Basic Setup
 
 1. **Create the initial directory structure**:
@@ -34,24 +33,31 @@ your-project/
 │   ├── changelog.md
 │   ├── dependency_tracker.md
 │   ├── productContext.md
-│   └── projectbrief.md
+│   ├── projectbrief.md
+│   └── progress.md
 ├── docs/
 │   └── doc_tracker.md
 └── .memory-bank-rules
 ```
+- **You can use my Project Forge to help you create documentation**:
+   - Access [Project Forge](https://chatgpt.com/g/g-67cb609270088191badfb590038dec07-project-forge)
+   - Follow the instructions
 
 2. **Initialize core files**:
-Using the [templates](templates) folder: 
-- Copy the `.memory-bank-rules` template from the [Core System Prompt](crct-prompts-symbolic/core_system_prompt.md)
-- Create basic `projectbrief.md` with your project's mission and objectives
-- Copy empty `activeContext.md`, `changelog.md`, `progress.md`and other core files 
 
-1. **Set up plugin files**:
-- Set you system prompt with [Core System Prompt](crct-prompts-symbolic/core_system_prompt.md)
-  - In github copilot create `.github`folder and save core system prompt instructions with the name copilot-instructions.md
-- Copy [Setup/Maintenance Plugin](crct-prompts-symbolic/setup-plugin.md) to `memory-bank/plugins/setup_plugin.md`
-- Copy [Strategy Plugin](crct-prompts-symbolic/strategy_plugin.md) to `memory-bank/plugins/strategy_plugin.md`
-- Copy [Execution Plugin](crct-prompts-symbolic/execution-plugin.md) to `memory-bank/plugins/execution_plugin.md`
+   Using the [templates](templates) folder:  
+   - Copy the `.memory-bank-rules` template from the [Core System Prompt](crct-prompts-symbolic/core_system_prompt.md)  
+   - Create a basic `projectbrief.md` with your project's mission and objectives  
+   - Copy empty `activeContext.md`, `changelog.md`, `progress.md`, and other core files  
+
+3. **Set up plugin files**:
+
+   - Set your system prompt with [Core System Prompt](crct-prompts-symbolic/core_system_prompt.md)  
+     - In GitHub Copilot, create a `.github` folder and save core system prompt instructions with the name `copilot-instructions.md`  
+   - Copy [Setup/Maintenance Plugin](crct-prompts-symbolic/setup-plugin.md) to `memory-bank/plugins/setup_plugin.md`  
+   - Copy [Strategy Plugin](crct-prompts-symbolic/strategy_plugin.md) to `memory-bank/plugins/strategy_plugin.md`  
+   - Copy [Execution Plugin](crct-prompts-symbolic/execution-plugin.md) to `memory-bank/plugins/execution_plugin.md`
+
 
 ## Using with GitHub Copilot
 
