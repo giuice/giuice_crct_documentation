@@ -1,4 +1,4 @@
-# **CRCT Setup/Maintenance Plugin **
+# SETUP/MAINTENANCE PLUGIN
 
 ╔═══════════════════════════════════════════════╗
 ║              SETUP/MAINTENANCE                ║
@@ -10,32 +10,32 @@
 ## ENTERING/EXITING THIS PHASE
 
 **Enter if**:
-- `.memorybankrules` shows `current_phase: "Setup/Maintenance"`
+- `.memorybankrules` shows `CURRENT: Setup/Maintenance`
 - `.memorybankrules` is missing (initial setup)
 
 **Exit when**:
 - All core files exist and are initialized
-- Code root directories are identified 
+- Code root directories are identified
 - Dependency trackers are populated with no placeholders
-- `system_manifest.md` is created
-- Mini-trackers are created/populated as needed
 
 **Exit action**:
 ```
-[LAST_ACTION_STATE]
-last_action: "Completed Setup/Maintenance Phase"
-current_phase: "Setup/Maintenance"
-next_action: "Phase Complete - User Action Required"
-next_phase: "Strategy"
+[PHASE_MARKER]
+CURRENT: Setup/Maintenance
+NEXT: Strategy
+LAST_ACTION: Completed Setup/Maintenance Phase
+REQUIRED_BEFORE_TRANSITION: User Action Required
+[/PHASE_MARKER]
 ```
 
 ## CORE FILE INITIALIZATION
 
 **Required files**:
 - `.memorybankrules`: Phase management
-- `memory-bank/system_manifest.md`: Project overview
+- `memory-bank/projectbrief.md`: Project goals
+- `memory-bank/productContext.md`: Product context
 - `memory-bank/activeContext.md`: Current state
-- `memory-bank/module_relationship_tracker.md`: Module dependencies
+- `memory-bank/dependency_tracker.md`: Module dependencies
 - `memory-bank/changelog.md`: Change log
 - `memory-bank/progress.md`: Progress tracking
 - `docs/doc_tracker.md`: Documentation dependencies
@@ -45,22 +45,19 @@ next_phase: "Strategy"
 2. For missing files, create with basic templates:
    - For `.memorybankrules`:
      ```
-     [LAST_ACTION_STATE]
-     last_action: "System Initialized"
-     current_phase: "Setup/Maintenance"
-     next_action: "Initialize Core Files"
-     next_phase: "Setup/Maintenance"
+     [PHASE_MARKER]
+     CURRENT: Setup/Maintenance
+     NEXT: Setup/Maintenance
+     LAST_ACTION: System Initialized
+     REQUIRED_BEFORE_TRANSITION: Core Files Creation
+     [/PHASE_MARKER]
      
      [CODE_ROOT_DIRECTORIES]
      - [list to be populated]
      
-     [DOC_DIRECTORIES]
-     - docs
-     
      [LEARNING_JOURNAL]
      - Initial setup on [current date]
      ```
-   - For `system_manifest.md`: Use template from `memory-bank/templates/`
    - For other files: Create with appropriate headers
 
 ## CODE ROOT IDENTIFICATION
@@ -96,59 +93,49 @@ next_phase: "Strategy"
    # MATRIX (Row depends on Column)
    # Symbols: > (depends on), < (depended by), x (mutual), - (none), d (doc)
        | K1 | K2 |
-   K1  | -  | >  |
-   K2  | <  | -  |
+   K1  | -  | -  |
+   K2  | -  | -  |
    [DEP_MATRIX_END]
    ```
 
-2. For each dependency:
-   - Use `ADD_DEP(source, target, type)` to add new dependencies
-   - Use `REMOVE_DEP(source, target, type)` to remove incorrect dependencies
-   - Use `ADD_MODULE(id, path)` to add newly discovered modules
-   - Use `REMOVE_MODULE(id)` to remove obsolete modules
+2. Identify modules and files from code roots
+3. Update KEY DEFINITIONS with identified modules
+4. Analyze code to identify dependencies:
+   - Imports between modules
+   - Function calls between modules
+   - Documentation references
+5. Update MATRIX with appropriate symbols
 
-3. Ensure the following:
-   - All module-to-module dependencies are recorded
-   - Documentation dependencies are recorded in `doc_tracker.md`
-   - Mini-trackers for module-specific dependencies are created
+## SETUP/MAINTENANCE MUP ADDITIONS
 
-## SETUP/MAINTENANCE MUP
-
-After each significant action:
-1. Update `activeContext.md` with action and results
-2. Update `changelog.md` if files were created or modified
-3. Update `.memorybankrules`:
-   ```
-   [LAST_ACTION_STATE]
-   last_action: "[description of completed action]"
-   current_phase: "Setup/Maintenance"
-   next_action: "[next action to take]"
-   next_phase: "Setup/Maintenance"
-   ```
-4. Update `system_manifest.md` if project structure changes
-5. Check if phase transition criteria are met
+In addition to core MUP checklist, also verify:
+[ ] 6. Code root directories identified (if applicable)
+[ ] 7. Dependency trackers properly formatted
+[ ] 8. Progress updated (if state changed)
+[ ] 9. Core files correctly initialized
 
 ## CHECKPOINTS BEFORE TRANSITION
 
 [TRANSITION_CHECKLIST]
 [ ] All required files exist
 [ ] Code roots identified and added to `.memorybankrules`
-[ ] `module_relationship_tracker.md` populated with dependencies
+[ ] `dependency_tracker.md` populated with dependencies
 [ ] `doc_tracker.md` created and populated
-[ ] `system_manifest.md` created using template
-[ ] `.memorybankrules` updated with next_phase: "Strategy"
+[ ] `.memorybankrules` updated with NEXT: Strategy
 [/TRANSITION_CHECKLIST]
 
-## MUP VERIFICATION FORMAT
+## REQUIRED RESPONSE FORMAT
 
-After every action, include:
+All responses after an action MUST end with:
 
 [MUP_VERIFICATION]
 [X] 1. Updated activeContext.md with: [brief description]
 [X] 2. Updated changelog.md: [Yes/No + reason]
-[X] 3. Updated `.memorybankrules` with last_action: [action description]
-[X] 4. Updated relevant HDTA files: [Yes/No + which ones]
-[X] 5. Verified all changes
+[X] 3. Updated phase marker with last_action: [action description]
+[X] 4. Verified next action is correct: [next action]
+[X] 5. Checked if phase transition is needed: [Yes/No + reason]
 [X] 6. Code root directories identified: [Yes/No/NA + details]
-[X] 7. Dependency trackers populated: [Yes/No/NA + details]
+[X] 7. Dependency trackers formatted: [Yes/No/NA + details]
+[X] 8. Progress updated: [Yes/No/NA + details]
+[X] 9. Core files initialized: [Yes/No/NA + details]
 [/MUP_VERIFICATION]
