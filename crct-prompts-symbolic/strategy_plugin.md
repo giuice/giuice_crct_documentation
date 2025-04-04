@@ -1,11 +1,12 @@
 # STRATEGY PLUGIN
 
-╔═══════════════════════════════════════════════════════════╗
-║                       STRATEGY                             ║
-║                                                           ║
-║  Identify  -->  Create     -->  Prioritize  -->  Decompose ║
-║  Tasks         Instructions     Tasks          Complex Tasks║
-╚═══════════════════════════════════════════════════════════╝
+╔═══════════════════════════════════════════════════════════════════════════════════╗
+║                                    STRATEGY                                        ║
+║                                                                                   ║
+║  Identify  -->  Create         -->  Create     -->  Prioritize  -->  Decompose     ║
+║  Areas         Implementation      Tasks          Tasks          Complex Tasks     ║
+║                Plans                                                               ║
+╚═══════════════════════════════════════════════════════════════════════════════════╝
 
 ## ENTERING/EXITING THIS PHASE
 
@@ -14,6 +15,7 @@
 - Transitioning from Setup/Maintenance
 
 **Exit when**:
+- All implementation plans are created
 - All instruction files are created with complete steps
 - Dependencies are clearly defined
 - Tasks are prioritized and ready for execution
@@ -23,7 +25,7 @@
 [PHASE_MARKER]
 CURRENT: Strategy
 NEXT: Execution
-LAST_ACTION: Completed Strategy Phase - Tasks Planned
+LAST_ACTION: Completed Strategy Phase - Plans and Tasks Created
 REQUIRED_BEFORE_TRANSITION: User Action Required
 [/PHASE_MARKER]
 ```
@@ -44,6 +46,81 @@ REQUIRED_BEFORE_TRANSITION: User Action Required
 3. Check dependency trackers for module/file relationships
 4. Review project objectives from `projectbrief.md`
 
+## IMPLEMENTATION PLAN CREATION
+
+❗ **PRE-IMPLEMENTATION PLAN CHECKLIST** - Complete before creating ANY implementation plan:
+[IMPLEMENTATION_CHECKLIST]
+[ ] 1. Plan name follows convention: IP{number}_{plan_name}
+[ ] 2. Plan will be stored in memory-bank/implementation_plans/ directory
+[ ] 3. Plan number is unique and sequential
+[ ] 4. Plan name clearly describes the area of development
+[ ] 5. All required sections are planned
+[/IMPLEMENTATION_CHECKLIST]
+
+1. Identify area for implementation based on:
+   - `projectbrief.md` objectives
+   - `activeContext.md` priorities
+   - System architecture and components
+
+2. Create implementation plan file with correct naming convention:
+   ```
+   memory-bank/implementation_plans/IP{number}_{plan_name}.md
+   ```
+   For example: `memory-bank/implementation_plans/IP1_UserDashboard.md`
+   
+   ❗ **CRITICAL**: ALL implementation plans MUST be stored in the `memory-bank/implementation_plans/` directory
+
+3. Copy, fill out, and include this IMPLEMENTATION PLAN CREATION TEMPLATE in your response:
+
+[IMPLEMENTATION_PLAN_TEMPLATE]
+PLAN ID: IP{number}_{name}
+PLAN LOCATION: memory-bank/implementation_plans/IP{number}_{name}.md
+PLAN DESCRIPTION: [Brief description]
+RELATED TASKS: [List of T{number}_{task_name} IDs]
+FOLLOWS NAMING CONVENTION: [YES/NO]
+[/IMPLEMENTATION_PLAN_TEMPLATE]
+
+4. Copy template from `memory-bank/templates/implementation_plan_template.md` and populate with:
+   ```
+   # IP{number}_{plan_name}
+   
+   ## Overview
+   [High-level description of implementation area]
+   
+   ## Goals
+   - [Goal 1]
+   - [Goal 2]
+   
+   ## Components
+   - [Component 1]
+   - [Component 2]
+   
+   ## Technical Approach
+   [Description of technical approach]
+   
+   ## Related Tasks
+   - T{number}_{task_name} - [Brief description]
+   - T{number}_{task_name} - [Brief description]
+   
+   ## Timeline
+   - [Phase 1]
+   - [Phase 2]
+   
+   ## Risks and Mitigations
+   - [Risk 1]: [Mitigation 1]
+   - [Risk 2]: [Mitigation 2]
+   ```
+
+5. Update `progress.md` to include implementation plan:
+   ```
+   ## Implementation Plans
+   - IP1_UserDashboard: 0% (not started)
+   
+   ## Related Tasks
+   - T1_DashboardLayout: 0% (not started) - [IP1]
+   - T2_DashboardWidgets: 0% (not started) - [IP1]
+   ```
+
 ## TASK INSTRUCTION FILE CREATION
 
 ❗ **PRE-TASK CREATION CHECKLIST** - Complete before creating ANY task file:
@@ -52,30 +129,21 @@ REQUIRED_BEFORE_TRANSITION: User Action Required
 [ ] 2. Task will be stored in memory-bank/tasks/ directory
 [ ] 3. Task number is unique and sequential
 [ ] 4. Task name clearly describes the purpose
-[ ] 5. All required sections are planned
+[ ] 5. Implementation plan is referenced (if applicable)
+[ ] 6. All required sections are planned
 [/TASK_CHECKLIST]
 
 1. Identify task/subtask based on:
    - `projectbrief.md` objectives
    - `activeContext.md` priorities
    - Dependencies from trackers
+   - Implementation plans (reference parent plan)
 
 2. Create file with correct naming convention in the dedicated tasks directory:
    ```
-   
-   And update `progress.md`:
-   ```
-   ## Task Completion
-   - T1_DatabaseSetup: 0% (not started)
-   - T2_UserAuthentication: 0% (not started)
-   - T3_UIComponents: 0% (not started)
-   
-   ## Next Major Milestones
-   1. Begin execution of highest priority task
-   ```
    memory-bank/tasks/T{number}_{task_name}_instructions.txt
    ```
-   For example: `memory-bank/tasks/T1_DatabaseSetup_instructions.txt`
+   For example: `memory-bank/tasks/T1_DashboardLayout_instructions.txt`
    
    ❗ **CRITICAL**: ALL task files MUST be stored in the `memory-bank/tasks/` directory
 
@@ -85,18 +153,20 @@ REQUIRED_BEFORE_TRANSITION: User Action Required
 TASK ID: T{number}_{name}
 TASK LOCATION: memory-bank/tasks/T{number}_{name}_instructions.txt
 TASK DESCRIPTION: [Brief description]
+PARENT IMPLEMENTATION PLAN: [IP{number}_{name}]
 FOLLOWS NAMING CONVENTION: [YES/NO]
 [/TASK_CREATION_TEMPLATE]
 
-Then populate instruction file with required sections:
+4. Copy template from `memory-bank/templates/task_template.md` and populate with:
    ```
-   # T{number}_{name} Instructions
+   # T{number}_{task_name} Instructions
    
    ## Objective
    [Clear statement of purpose]
    
    ## Context
    [Background information]
+   [Implementation Plan: IP{number}_{plan_name}]
    
    ## Dependencies
    [List of required modules/files with keys]
@@ -113,40 +183,39 @@ Then populate instruction file with required sections:
    [Additional considerations]
    ```
 
-4. For module-level tasks, include mini dependency tracker at end:
+5. Update `progress.md` with task:
    ```
-   ## Mini Dependency Tracker
-   [DEP_MATRIX_START]
-   # KEY DEFINITIONS
-   K1: module_name/file1.py
-   K2: module_name/file2.py
+   ## Task Completion
+   - T1_DashboardLayout: 0% (not started) [IP1_UserDashboard]
+   - T2_DashboardWidgets: 0% (not started) [IP1_UserDashboard]
    
-   # MATRIX
-       | K1 | K2 |
-   K1  | -  | >  |
-   K2  | <  | -  |
-   [DEP_MATRIX_END]
+   ## Next Major Milestones
+   1. Begin execution of highest priority task
    ```
 
 ## TASK PRIORITIZATION
 
-1. Review existing instruction files
+1. Review existing implementation plans and instruction files
 2. Assess dependencies from trackers to identify prerequisite tasks
 3. Align with project objectives from `projectbrief.md`
 4. Consider recent priorities from `activeContext.md`
-5. Document prioritization AND locations in `activeContext.md` AND update `progress.md`:
+5. Document prioritization in `activeContext.md` AND update `progress.md`:
    ```
    ## Task Tracking
    
+   ### Implementation Plan Locations
+   - IP1_UserDashboard: memory-bank/implementation_plans/IP1_UserDashboard.md
+   - IP2_UserProfile: memory-bank/implementation_plans/IP2_UserProfile.md
+   
    ### Task Locations
-   - T1_DatabaseSetup: memory-bank/tasks/T1_DatabaseSetup_instructions.txt
-   - T2_UserAuthentication: memory-bank/tasks/T2_UserAuthentication_instructions.txt
-   - T3_UIComponents: memory-bank/tasks/T3_UIComponents_instructions.txt
+   - T1_DashboardLayout: memory-bank/tasks/T1_DashboardLayout_instructions.txt [IP1]
+   - T2_DashboardWidgets: memory-bank/tasks/T2_DashboardWidgets_instructions.txt [IP1]
+   - T3_ProfileSettings: memory-bank/tasks/T3_ProfileSettings_instructions.txt [IP2]
    
    ### Task Priorities
-   1. T1_DatabaseSetup (Highest) - Required for all other tasks
-   2. T2_UserAuthentication (High) - Security requirement
-   3. T3_UIComponents (Medium) - Can be started in parallel
+   1. T1_DashboardLayout (Highest) - Required for all dashboard work [IP1]
+   2. T3_ProfileSettings (High) - Security requirement [IP2]
+   3. T2_DashboardWidgets (Medium) - Can be started after layout [IP1]
    ```
 
 ## RECURSIVE TASK DECOMPOSITION
@@ -158,25 +227,29 @@ For complex tasks:
    ```
    memory-bank/tasks/T{parent_number}_{parent_name}_ST{subtask_number}_{subtask_name}_instructions.txt
    ```
-   For example: `memory-bank/tasks/T1_DatabaseSetup_ST1_SchemaDesign_instructions.txt`
+   For example: `memory-bank/tasks/T1_DashboardLayout_ST1_GridSystem_instructions.txt`
 
 4. Define dependencies between subtasks
 5. Update parent task to reference subtasks
-6. Document decomposition in `activeContext.md`
+6. Document decomposition in `activeContext.md` and reference parent implementation plan
 
 ## STRATEGY MUP ADDITIONS
 
 In addition to core MUP checklist, also verify:
-[ ] 6. Task instructions follow naming convention
-[ ] 7. All task instructions have complete sections
-[ ] 8. Task priorities are documented
-[ ] 9. Progress.md updated with new tasks
+[ ] 6. Implementation plans follow naming convention
+[ ] 7. Task instructions follow naming convention
+[ ] 8. All implementation plans and task instructions have complete sections
+[ ] 9. Tasks are linked to their implementation plans
+[ ] 10. Task priorities are documented
+[ ] 11. Progress.md updated with new implementation plans and tasks
 
 ## CHECKPOINTS BEFORE TRANSITION
 
 [TRANSITION_CHECKLIST]
+[ ] All identified implementation areas have implementation plans
 [ ] All identified tasks have instruction files
-[ ] All instruction files have complete sections
+[ ] All implementation plans and instruction files have complete sections
+[ ] Tasks are linked to their implementation plans
 [ ] Dependencies are clearly specified
 [ ] Task priorities are documented
 [ ] Complex tasks are decomposed if needed
@@ -193,9 +266,12 @@ All responses after an action MUST end with:
 [X] 3. Updated phase marker with last_action: [action description]
 [X] 4. Verified next action is correct: [next action]
 [X] 5. Checked if phase transition is needed: [Yes/No + reason]
-[X] 6. Task instructions follow T{number}_{name} convention: [Yes/No + EXACT filename]
-[X] 7. Task file saved in memory-bank/tasks/ directory: [Yes/No + EXACT path]
-[X] 8. All task instructions have complete sections: [Yes/No + list any missing]
-[X] 9. Task priorities are documented: [Yes/No + details]
-[X] 10. Progress.md updated with new tasks: [Yes/No + details]
+[X] 6. Implementation plans follow IP{number}_{name} convention: [Yes/No + EXACT filename]
+[X] 7. Implementation plan files saved in memory-bank/implementation_plans/ directory: [Yes/No + EXACT path]
+[X] 8. Task instructions follow T{number}_{name} convention: [Yes/No + EXACT filename]
+[X] 9. Task files saved in memory-bank/tasks/ directory: [Yes/No + EXACT path]
+[X] 10. All implementation plans and task instructions have complete sections: [Yes/No + list any missing]
+[X] 11. Tasks are linked to their implementation plans: [Yes/No + details]
+[X] 12. Task priorities are documented: [Yes/No + details]
+[X] 13. Progress.md updated with new implementation plans and tasks: [Yes/No + details]
 [/MUP_VERIFICATION]

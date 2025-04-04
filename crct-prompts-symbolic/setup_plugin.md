@@ -42,7 +42,7 @@ REQUIRED_BEFORE_TRANSITION: User Action Required
 
 **Creation procedure**:
 1. Check if each file exists
-2. For missing files, create with basic templates:
+2. For missing files, create with basic templates[memory-bank/templates]:
    - For `.memorybankrules`:
      ```
      [PHASE_MARKER]
