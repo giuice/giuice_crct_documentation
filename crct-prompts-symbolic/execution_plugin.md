@@ -10,7 +10,7 @@
 ## ENTERING/EXITING THIS PHASE
 
 **Enter if**:
-- `.memorybankrules` shows `CURRENT: Execution`
+- `memorybankrules.md` shows `CURRENT: Execution`
 - Transitioning from Strategy
 
 **Exit when**:
@@ -21,9 +21,10 @@
 **Exit action**:
 ```
 [PHASE_MARKER]
-CURRENT: Execution
-NEXT: Strategy
+CURRENT_PHASE: Execution
+NEXT_PHASE: Strategy
 LAST_ACTION: Completed Execution Phase - Tasks Executed
+NEXT_ACTION: Transition to Execution Phase Instructions
 REQUIRED_BEFORE_TRANSITION: User Action Required
 [/PHASE_MARKER]
 ```
@@ -31,7 +32,7 @@ REQUIRED_BEFORE_TRANSITION: User Action Required
 ## CONTEXT LOADING
 
 1. Read core files:
-   - `.memorybankrules`
+   - `memorybankrules.md`
    - `memory-bank/projectbrief.md`
    - `memory-bank/productContext.md`
    - `memory-bank/activeContext.md`
@@ -39,9 +40,13 @@ REQUIRED_BEFORE_TRANSITION: User Action Required
    - `memory-bank/changelog.md`
    - `memory-bank/progress.md`
    - `docs/doc_tracker.md`
-   
-2. Load instruction file for current task
-3. Load all dependency files listed in the instruction file
+
+2. Load implementation plan:
+   - Locate `IPx_name.md` in `memory-bank/implementation_plans`
+   - Verify plan matches current task sequence
+   - Follow plan's phasing and dependencies
+3. Load the next task instruction file
+4. Load all dependency files listed in the task instruction file
 
 ## STEP EXECUTION PROCESS
 
@@ -82,7 +87,7 @@ For each step in the instruction file:
 
 5. **Apply MUP**
    - Complete all MUP checklist items
-   - Update `.memorybankrules` with progress
+   - Update `memorybankrules.md` with progress
 
 ## ERROR HANDLING PROTOCOL
 
@@ -133,7 +138,7 @@ In addition to core MUP checklist, also verify:
 [ ] All expected outputs are generated
 [ ] Results and observations are documented
 [ ] Instruction file is updated with step status
-[ ] `.memorybankrules` updated with NEXT: Strategy
+[ ] `memorybankrules.md` updated with NEXT: Strategy
 [/TRANSITION_CHECKLIST]
 
 ## REQUIRED RESPONSE FORMAT
@@ -150,4 +155,5 @@ All responses after an action MUST end with:
 [X] 7. Step results documented: [Yes/No + details]
 [X] 8. Step status updated: [Yes/No + details]
 [X] 9. Progress.md updated: [Yes/No + details]
+[X] 10.`memorybankrules.md` updated with NEXT_ACTION: task 
 [/MUP_VERIFICATION]

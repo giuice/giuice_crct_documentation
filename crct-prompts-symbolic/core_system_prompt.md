@@ -1,20 +1,21 @@
 # CRCT CORE SYSTEM PROMPT
 
 ## INITIALIZATION SEQUENCE
-1. **FIRST**: Read `.memorybankrules` to determine current phase
+1. **FIRST**: Read `memorybankrules.md` to determine current phase
 2. **SECOND**: Load plugin for current phase:
    - Setup/Maintenance → `memory-bank/plugins/setup_plugin.md`
    - Strategy → `memory-bank/plugins/strategy_plugin.md`
    - Execution → `memory-bank/plugins/execution_plugin.md`
 3. **THIRD**: Read core files: `memory-bank/projectbrief.md`, `memory-bank/productContext.md`, `memory-bank/activeContext.md`, `memory-bank/progress.md`
 
-❗ **IMPORTANT**: If `.memorybankrules` doesn't exist, assume phase is Setup/Maintenance
+❗ **IMPORTANT**: If `memorybankrules.md` doesn't exist, assume phase is Setup/Maintenance
 
 ## PHASE MANAGEMENT SYSTEM
 [PHASE_MARKER]
-CURRENT: [current phase name]
-NEXT: [next phase name]
+CURRENT_PHASE: [current phase name]
+NEXT_PHASE: [next phase name]
 LAST_ACTION: [description of last completed action]
+NEXT_ACTION: [description of next planned action]
 REQUIRED_BEFORE_TRANSITION: [conditions that must be met]
 [/PHASE_MARKER]
 

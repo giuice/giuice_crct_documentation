@@ -10,8 +10,8 @@
 ## ENTERING/EXITING THIS PHASE
 
 **Enter if**:
-- `.memorybankrules` shows `CURRENT: Setup/Maintenance`
-- `.memorybankrules` is missing (initial setup)
+- `memorybankrules.md` shows `CURRENT: Setup/Maintenance`
+- `memorybankrules.md` is missing (initial setup)
 
 **Exit when**:
 - All core files exist and are initialized
@@ -24,6 +24,7 @@
 CURRENT: Setup/Maintenance
 NEXT: Strategy
 LAST_ACTION: Completed Setup/Maintenance Phase
+NEXT_ACTION: Transition to Strategy Phase
 REQUIRED_BEFORE_TRANSITION: User Action Required
 [/PHASE_MARKER]
 ```
@@ -31,7 +32,7 @@ REQUIRED_BEFORE_TRANSITION: User Action Required
 ## CORE FILE INITIALIZATION
 
 **Required files**:
-- `.memorybankrules`: Phase management
+- `memorybankrules.md`: Phase management
 - `memory-bank/projectbrief.md`: Project goals
 - `memory-bank/productContext.md`: Product context
 - `memory-bank/activeContext.md`: Current state
@@ -43,12 +44,13 @@ REQUIRED_BEFORE_TRANSITION: User Action Required
 **Creation procedure**:
 1. Check if each file exists
 2. For missing files, create with basic templates[memory-bank/templates]:
-   - For `.memorybankrules`:
+   - For `memorybankrules.md`:
      ```
      [PHASE_MARKER]
-     CURRENT: Setup/Maintenance
-     NEXT: Setup/Maintenance
+     CURRENT_PHASE: Setup/Maintenance
+     NEXT_PHASE: Setup/Maintenance
      LAST_ACTION: System Initialized
+     NEXT_ACTION: Create/Update Core files
      REQUIRED_BEFORE_TRANSITION: Core Files Creation
      [/PHASE_MARKER]
      
@@ -73,7 +75,7 @@ REQUIRED_BEFORE_TRANSITION: User Action Required
    - `build`, `dist` (outputs)
    - `docs` (documentation)
 
-4. Update `.memorybankrules`:
+4. Update `memorybankrules.md`:
    ```
    [CODE_ROOT_DIRECTORIES]
    - src
@@ -118,10 +120,10 @@ In addition to core MUP checklist, also verify:
 
 [TRANSITION_CHECKLIST]
 [ ] All required files exist
-[ ] Code roots identified and added to `.memorybankrules`
+[ ] Code roots identified and added to `memorybankrules.md`
 [ ] `dependency_tracker.md` populated with dependencies
 [ ] `doc_tracker.md` created and populated
-[ ] `.memorybankrules` updated with NEXT: Strategy
+[ ] `memorybankrules.md` updated with NEXT: Strategy
 [/TRANSITION_CHECKLIST]
 
 ## REQUIRED RESPONSE FORMAT
@@ -138,4 +140,5 @@ All responses after an action MUST end with:
 [X] 7. Dependency trackers formatted: [Yes/No/NA + details]
 [X] 8. Progress updated: [Yes/No/NA + details]
 [X] 9. Core files initialized: [Yes/No/NA + details]
+[X] 10. `memorybankrules.md` updated with NEXT_ACTION action
 [/MUP_VERIFICATION]

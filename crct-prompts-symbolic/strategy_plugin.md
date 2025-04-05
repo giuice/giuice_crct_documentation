@@ -11,7 +11,7 @@
 ## ENTERING/EXITING THIS PHASE
 
 **Enter if**:
-- `.memorybankrules` shows `CURRENT: Strategy`
+- `memorybankrules.md` shows `CURRENT: Strategy`
 - Transitioning from Setup/Maintenance
 
 **Exit when**:
@@ -23,9 +23,10 @@
 **Exit action**:
 ```
 [PHASE_MARKER]
-CURRENT: Strategy
-NEXT: Execution
+CURRENT_PHASE: Strategy
+NEXT_PHASE: Execution
 LAST_ACTION: Completed Strategy Phase - Plans and Tasks Created
+NEXT_ACTION: Trasition to 'EXECUTION' phase
 REQUIRED_BEFORE_TRANSITION: User Action Required
 [/PHASE_MARKER]
 ```
@@ -33,7 +34,7 @@ REQUIRED_BEFORE_TRANSITION: User Action Required
 ## CONTEXT LOADING
 
 1. Read core files:
-   - `.memorybankrules`
+   - `memorybankrules.md`
    - `memory-bank/projectbrief.md`
    - `memory-bank/productContext.md`
    - `memory-bank/activeContext.md`
@@ -253,7 +254,7 @@ In addition to core MUP checklist, also verify:
 [ ] Dependencies are clearly specified
 [ ] Task priorities are documented
 [ ] Complex tasks are decomposed if needed
-[ ] `.memorybankrules` updated with NEXT: Execution
+[ ] `memorybankrules.md` updated with NEXT: Execution
 [/TRANSITION_CHECKLIST]
 
 ## REQUIRED RESPONSE FORMAT
@@ -274,4 +275,5 @@ All responses after an action MUST end with:
 [X] 11. Tasks are linked to their implementation plans: [Yes/No + details]
 [X] 12. Task priorities are documented: [Yes/No + details]
 [X] 13. Progress.md updated with new implementation plans and tasks: [Yes/No + details]
+[X] 14. `memorybankrules.md` updated with NEXT_ACTION action
 [/MUP_VERIFICATION]
