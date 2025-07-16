@@ -42,7 +42,7 @@ your-project/
 
 2. **Initialize core files**:
 Using the [templates](templates) folder: 
-- Copy the `.memory-bank-rules` template from the [Core System Prompt](crct-prompts-symbolic/core_system_prompt.md)
+- Copy the `memory-bank-rules` template from the [Core System Prompt](crct-prompts-symbolic/core_system_prompt.md)
 - Create basic `projectbrief.md` with your project's mission and objectives
 - Copy empty `activeContext.md`, `changelog.md`, `progress.md`and other core files 
 
