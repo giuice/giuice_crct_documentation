@@ -37,12 +37,25 @@ your-project/
 │   └── projectbrief.md
 ├── docs/
 │   └── doc_tracker.md
-└── .memory-bank-rules
+└── memory-bank-rules
 ```
 
 2. **Initialize core files**:
 Using the [templates](templates) folder: 
-- Copy the `memory-bank-rules` template from the [Core System Prompt](crct-prompts-symbolic/core_system_prompt.md)
+- Create the `memory-bank-rules` template from the [Core System Prompt](crct-prompts-symbolic/core_system_prompt.md)
+[PHASE_MARKER]
+CURRENT_PHASE: Setup/Maintenance
+NEXT_PHASE: Setup/Maintenance
+LAST_ACTION: System Initialized
+NEXT_ACTION: Create/Update Core files
+REQUIRED_BEFORE_TRANSITION: Core Files Creation
+[/PHASE_MARKER]
+
+[CODE_ROOT_DIRECTORIES]
+- [list to be populated]
+
+[LEARNING_JOURNAL]
+- Initial setup on [current date]
 - Create basic `projectbrief.md` with your project's mission and objectives
 - Copy empty `activeContext.md`, `changelog.md`, `progress.md`and other core files 
 
